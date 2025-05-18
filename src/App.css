@@ -1,0 +1,322 @@
+/* Birthday Screen*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+  background: #000; 
+  height: 100%;
+}
+
+
+.birthday-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #1b0a2a, #000000);
+  color: #d1a3ff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Cinzel', serif;
+}
+
+/* Starry background with subtle purple shimmer */
+.birthday-screen::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.30;
+  filter: hue-rotate(270deg) brightness(10);
+  animation: twinkle 30s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Glowing crescent moon as a subtle decoration */
+.birthday-screen::after {
+  content: "🌙";
+  position: absolute;
+  top: 2rem;
+  right: 7rem;
+  font-size: 17rem;
+  color: #a168ff;
+  opacity: 0.15;
+  filter: drop-shadow(0 0 10px #b07eff);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-200px, -200px); } 
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(80px); } /* from 40px */
+  70% { opacity: 1; transform: translateY(-10px); } /* overshoot */
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+.birthday-title {
+  font-size: 4rem;
+  color: #bb96f7;
+  text-shadow:
+    0 0 8px #d1a3ff,
+    0 0 20px #915ee2,
+    0 0 30px #804ffc;
+  margin-bottom: 0.7rem;
+  z-index: 1;
+
+  animation: slideInTitle 2.5s ease-out forwards;
+}
+
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw) scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(15px) scale(1.02); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+.birthday-message {
+  max-width: 1000px;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #d1a3ffcc;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+.sign-card {
+  background: rgba(85, 0, 102, 0.3);
+  border-radius: 15px;
+  padding: 1rem 5rem;
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+  box-shadow:
+    0 0 20px #9f7affaa,
+    inset 0 0 15px #b07eff55;
+  color: #e0ccff;
+  backdrop-filter: blur(12px);
+  border: 1px solid #b07effaa;
+  z-index: 1;
+}
+
+.lilith-title {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  color: #cfa3ff;
+  text-shadow: 0 0 8px #b07eff;
+}
+
+/* New pulse animation for the moon */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px #b07eff);
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px #d8b5fb);
+    opacity: 0.3;
+    transform: scale(1.20);
+  }
+}
+
+/* Apply pulse animation on the moon */
+.birthday-screen::after {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.spotify-button {
+  background: linear-gradient(135deg, #7b4fff, #b07eff);
+  color: white;
+  padding: 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 10px #af7eff;
+  z-index: 1;
+}
+
+.spotify-button:hover {
+  background: linear-gradient(135deg, #9a6fff, #d1a3ff);
+  transform: scale(1.12) translateY(-3px);
+  box-shadow:
+    0 0 15px #d1a3ff,
+    0 0 30px #b07eff,
+    0 0 45px #9a6fff;
+  transition: all 0.3s ease;
+}
+
+
+/* Envelope screen */
+.envelope-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #862178, #000); /* deep purple to black */
+  color: #ffb1ea;
+  text-align: center;
+  font-family: "Cinzel", serif;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+/* Envelope card with "paper" look */
+.envelope-card {
+  position: relative;
+  background: linear-gradient(145deg, #1a001a, #2e0030); /* dark purples */
+  color: #ffb1ea;
+  padding: 3rem 4rem;
+  border-radius: 1.2rem;
+  box-shadow:
+    inset 0 0 15px #ff99dd88,
+    0 8px 20px rgba(233, 126, 219, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
+  font-size: 1.8rem;
+  max-width: 400px;
+  user-select: none;
+  z-index: 10;
+}
+
+/* Triangle flap shape on top */
+.envelope-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 60px solid #2e0030; /* flap color */
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 -5px 15px #ff99dd88;
+  z-index: -1;
+}
+
+/* Hover effect */
+.envelope-card:hover {
+  transform: scale(1.11) rotate(1deg);
+  box-shadow:
+    inset 0 0 20px #ff66ccaa,
+    0 12px 30px rgba(253, 130, 232, 0.9);
+}
+
+/* Text inside the card */
+.envelope-card h1,
+.envelope-card p {
+  margin: 0;
+  user-select: none;
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .birthday-title {
+    font-size: 2.8rem;
+  }
+
+  .birthday-message {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .sign-card {
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .spotify-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .envelope-card {
+    padding: 2rem 2.5rem;
+    font-size: 1.4rem;
+  }
+
+  .envelope-card::before {
+    top: -50px;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 50px solid #2e0030;
+  }
+}
+
+/* Phones (480px and below) */
+@media (max-width: 480px) {
+  .birthday-title {
+    font-size: 2rem;
+  }
+
+  .birthday-message {
+    font-size: 1rem;
+  }
+
+  .sign-card {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .lilith-title {
+    font-size: 1.3rem;
+  }
+
+  .spotify-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .birthday-screen::after {
+    font-size: 9rem;
+    top: 1rem;
+    right: 2rem;
+  }
+
+  .envelope-card {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .envelope-card::before {
+    top: -40px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 40px solid #2e0030;
+  }
+}
