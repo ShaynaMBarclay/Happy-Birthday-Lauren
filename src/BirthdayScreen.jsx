@@ -1,4 +1,14 @@
+import { useEffect } from 'react';
+
+
 function BirthdayScreen() {
+
+    useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100); // Slight delay helps mobile reliability
+  }, []);
+  
   return (
     <div className="birthday-screen lilith-bg">
       <h1 className="birthday-title fade-in">🌑 Happy Birthday, Lauren!</h1>
@@ -23,7 +33,7 @@ function BirthdayScreen() {
         🎵 Birthday Playlist
       </a>
     </div>
-  );
+  )
 }
 
 export default BirthdayScreen;
