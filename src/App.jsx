@@ -6,10 +6,10 @@ import ScrollToTop from './ScrollToTop';
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
-
+  
   return (
     <div className="min-h-screen bg-black text-white">
-       <ScrollToTop />
+        <ScrollToTop trigger={isOpened} />
       {!isOpened ? (
         <EnvelopeScreen onOpen={() => setIsOpened(true)} />
       ) : (

@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 
-function ScrollToTop() {
+function ScrollToTop({ trigger }) {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // This ensures scroll-to-top works on mobile too
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100); 
+  }, [trigger]);
 
   return null;
 }
