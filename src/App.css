@@ -267,7 +267,7 @@ html, body {
   }
 
   .envelope-card {
-    padding: 2rem 2.5rem;
+    padding: 2rem;
     font-size: 1.4rem;
   }
 
@@ -310,8 +310,9 @@ html, body {
   }
 
   .envelope-card {
-    padding: 1.5rem;
+    padding: 3rem;
     font-size: 1.2rem;
+    max-height: 90vh;
   }
 
   .envelope-card::before {
